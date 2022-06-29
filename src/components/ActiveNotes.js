@@ -12,10 +12,10 @@ const ActiveNotes = ({ notes, onDelete, onArchive }) => {
         <Empty empty={"Aktif"} />
       ) : (
         <div className="notes-list">
-          {activeNotes.map((note, idx) => {
+          {activeNotes.map((note, id) => {
             return (
               <NotesItem
-                key={idx}
+                key={id}
                 note={note}
                 onDelete={onDelete}
                 onArchive={onArchive}

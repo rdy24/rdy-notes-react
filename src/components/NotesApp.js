@@ -14,19 +14,10 @@ class NotesApp extends React.Component {
       searchNotes: getInitialData(),
     };
 
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
-    this.onSearchHandler = this.onSearchHandler.bind(this);
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
-  }
-
-  onDeleteHandler(id) {
-    const notes = this.state.notes.filter((note) => note.id !== id);
-    const searchNotes = this.state.searchNotes.filter((note) => note.id !== id);
-    this.setState({
-      notes: notes,
-      searchNotes: searchNotes,
-    });
+    this.onSearchHandler = this.onSearchHandler.bind(this);
   }
 
   onArchiveHandler(id) {
@@ -42,13 +33,12 @@ class NotesApp extends React.Component {
     });
   }
 
-  onSearchHandler(e) {
-    this.setState((prevState) => {
-      return {
-        searchNotes: prevState.notes.filter((note) =>
-          note.title.toLowerCase().includes(e.target.value.toLowerCase())
-        ),
-      };
+  onDeleteHandler(id) {
+    const notes = this.state.notes.filter((note) => note.id !== id);
+    const searchNotes = this.state.searchNotes.filter((note) => note.id !== id);
+    this.setState({
+      notes: notes,
+      searchNotes: searchNotes,
     });
   }
 
@@ -75,6 +65,16 @@ class NotesApp extends React.Component {
             createdAt: new Date().toISOString(),
           },
         ],
+      };
+    });
+  }
+
+  onSearchHandler(event) {
+    this.setState((prevState) => {
+      return {
+        searchNotes: prevState.notes.filter((note) =>
+          note.title.toLowerCase().includes(event.target.value.toLowerCase())
+        ),
       };
     });
   }

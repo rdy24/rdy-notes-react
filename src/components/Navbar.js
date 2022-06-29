@@ -8,7 +8,7 @@ const Navbar = ({ onSearch }) => {
         <input
           type="text"
           placeholder="Cari catatan saya"
-          onChange={(e) => onSearch(e)}
+          onChange={(event) => onSearch(event)}
         />
       </div>
     </div>

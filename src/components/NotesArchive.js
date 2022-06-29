@@ -12,10 +12,10 @@ const NotesArchive = ({ notes, onDelete, onArchive }) => {
         <Empty empty={"Diarsipkan"} />
       ) : (
         <div className="notes-list">
-          {archivedNotes.map((note, idx) => {
+          {archivedNotes.map((note, id) => {
             return (
               <NotesItem
-                key={idx}
+                key={id}
                 note={note}
                 onDelete={onDelete}
                 onArchive={onArchive}
